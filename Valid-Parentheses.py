@@ -63,6 +63,7 @@ def isValid (s) :
             #if there is a pair add to list
             if so[sci] in TempHolderFolder :
                 TempHolderFolder.append(sc[sci])
+            print(TempHolderFolder)
             #locating each bracket (furthest and last in list)
             idel1 = len(TempHolderFolder) - TempHolderFolder[::-1].index(sc[sci]) - 1 #from right first closed bracket
             idel2 = len(TempHolderFolder) - TempHolderFolder[::-1].index(so[sci]) - 1 #furthest first open bracket
@@ -80,6 +81,40 @@ def isValid (s) :
         return True
 
 print(isValid (s))
+
+'''
+#Optimised solution by Andris
+
+        #A list to temporary hold the brackets.
+        #This is to keep the count of open and clsoed brackets.
+        TempHolderFolder = []
+
+        #condition of pairs opening string & closing string
+        so = ["(","[","{"]
+        sc = [")","]","}"]
+
+        for i in range(len(s)) :
+            #if it is closing string
+            if s[i] in so :
+                TempHolderFolder.append(s[i])
+            if s[i] in sc :
+                #getting index of closed bracket from closed bracket list
+                #note that this is the same index as in open bracket list
+                sci = sc.index(s[i])
+                if len(TempHolderFolder) > 0 and TempHolderFolder[-1] == so[sci]:
+                    del TempHolderFolder[-1]
+                else:
+                    return False
+
+        #Once all of the loops are done it is time to check if TempHolderFolder is empty.
+        #If not, something didn't have a pair.
+        if len(TempHolderFolder) != 0 :
+            return False
+        else :
+            return True
+'''
+
+
 
 '''
 #Someone else's code from Leetcode.
