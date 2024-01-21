@@ -1,0 +1,101 @@
+Each algorithm will have input/output. Make them clear.
+
+"Perhaps the most important principle for a good algorithm 
+designer is to refuse to be content."
+
+======================================================
+Karatsuba multiplication (one of many integer multiplication algorithms)
+
+x = 5678, where 56 is a, 78 is b
+y = 1234, where 12 is c, 23 is d
+
+First, a*c then b*d, then (a+b)(c+d), 
+then subtract (a+b)(c+d) - b*d - a*c
+then sum (a*c * 1000) + (b*d) + (((a+b)(c+d) - b*d - a*c)* 100)
+
+
+A recursive algorithm invokes itself recursivley. This is recursive Karatsuba example.
+For the above use case, x = 10^n/2 * a + b and y = 10^n/2 * c + d 
+and then x * y (solved) is 
+10^n * a * c + 10^n/2 * (a * d + b * c) + b * d
+Recursive needs a base case. This time it is two one-digit numbers
+Recursively compute a*c then b*d then (a+b)*(c*d) = a*c + a*d + b*c + b*d
+then subtract a*c + a*d + b*c + b*d - b*d - a*c 
+which shortens to a*d + b*c
+which means 3 calls: 56*23 + 78*12; 5*3 + 6*2; 7*2 + 8*1
+
+
+======================================================
+Design and Analysis of algorithms
+
+Randomization will apply QuickSort, primality testing, graph partitioning, hasing.
+It is used to reason about algorithms.
+
+Computational primitives are very very fast. It is good to apply it wherever it can help.
+For example, sorting, shortest paths, social networks.
+
+Data structures are used for querying, such as heaps, balanced binary search trees and hashing.
+
+
+======================================================
+Merge sort (Divide & Conquer)
+
+The sorting problem I/O:
+Input: Array of numbers, unsorted
+Output, same numbers, but sorted in increasing order
+
+Pseudocode for merge sort
+C = output array [length=n]
+A = 1st sorted array [n/2]
+B = 2nd sorted array [n/2]
+i = 1 element in A
+j = 1 element in b
+
+for k=1 to n 
+if A(i) < B(i)
+C(k) = A(i)
+i++
+else[ B(j) < A(i)]
+C(k) = B(j)
+j++
+[edge cases]
+end
+
+Operation count: 2 operations to initialise i & j,
+comparison is an operation that has 2 more operations under it,
+then an iteration is an operation and "end" is an operation. 
+So 4 operations in every loop.
+Running time of an array of m numbers is <= 4m + 2. (At most 6m, assuming)
+Claim is that merge sort never needs more than <=6n log2(n) + 6n operations 
+to sort n numbers. Logorithm represents dividing the number by two many times,
+we are using 6n * log of two for n because we are dividing each 
+operation by two until it's down to one.
+
+Proof of claim: we will use "recursion tree" method.
+root 0 [entire input]
+level 1 [half in one, half in other]
+level 2 [quarter in each branch]
+level 3 [eight in each branch]
+...
+
+- What is the level at the bottom of the tree? 
+I chose log2(n), which is correct. I think because it keeps dividing by two.
+The tutor says it's because the input size decreases by two at every level,
+so the number of levels is the exact amount of times you need to divide by 2
+to get to the number of 1 at the bottom. 
+Therefore, the total number of levels is log2(n) + 1 (accounting for the last level)
+
+At each level j=0,1,2..., log2(n) there are 2^j subproblems, each of size n/2^j
+which means the total # of operations at level j:
+# of level-j subproblems times subproblem size at level-j
+<= 2^j * 6(n/2^j) = 6n (independent of j)
+so total is # of operations times # of levels
+6n*(log2(n) + 1)
+
+
+======================================================
+Guiding principles
+
+
+
+
