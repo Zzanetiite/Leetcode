@@ -96,6 +96,44 @@ so total is # of operations times # of levels
 ======================================================
 Guiding principles
 
+# 1 Worst-case Analysis
+Bound holds for every input and length, no assumptions.
+Appropriate for general-purpose routines.
+
+average-case analysis
+Using benchmarks as the assumption.
+
+# 2 Won't pay attention to constants factors
+Justification: it is easier; 
+constants depend on architecture, compiler, program;
+we lose very little predictive power by removing constants.
+
+# 3 Asymptotic analysis
+Focus on running time for large input sizes n.
+E.g., merge sort 6nlog2n + 6n is better 
+than any quadratic expression 1/2*n^2
+Justification: any big problems are insteresting;
+The value of algorithm grows by size.
+
+# 5 Fast Algorithm 
+is such that grows slowly with input size.
+We aspire linear running time (or close to it).
+
+
+======================================================
+Asymptotic analysis
+Definition: Suppress constant factors and lower-order terms.
+For example, merge sort is Big-oh of nlogn.
+
+for i=1 to n:
+    for j=i+1 to n    
+        if A[i] == A[j] return True
+return false
+
+Operations:
+1. The inner loop runs n times for every iteration of the outer loop.
+2. The outer loop runs n times.
+Therefore n * n = n^2
 
 
 
