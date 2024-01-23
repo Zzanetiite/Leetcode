@@ -136,4 +136,34 @@ Operations:
 Therefore n * n = n^2
 
 
+======================================================
+Big-Oh Notation
+T(n) = function on n=1,2,3...
+
+O(1) - Constant complexity; n is not iterated on 
+and not recursed, just something done to it and returned.
+For example, multiplied by 2 or logged in console.
+
+O(logn) - Logarithmic complexity; Every time n increases by 
+an amount k, the time or space increases by k/2.
+For example, adding items to a heap or a loop that
+works with an array, such as sorting algorithms.
+
+O(n) - Linear complexity; If time and space scale linearly.
+For example, if one more element is needed every time n 
+increases by one, then it is O(n). 
+
+O(nlogn) - Loglinear complexity; Impleas that logn will happen n times.
+For example, for recursive algorithms and binary tree algorithms.
+
+O(n^x) - Polynomial complexity; X represents how many times 
+all of n will be processed for every n. Generally, for nested loops,
+x will equal the number of nested loops. This is not a good solution.
+
+O(X^n) - Exponential time; Means that time or space will be raised to 
+the power of n. Occurs from having a recursive algorithm that 
+calls X number of algorithms. Unlikely to come across.
+
+O(n!) - Factorial complexity; Very very complex, could be useful 
+for security. Unlikely to come across.
 
